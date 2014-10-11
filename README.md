@@ -1,6 +1,6 @@
 # DocxMailmerge
 
-TODO: Write a gem description
+DocxMailmerge is a Ruby port of the Python [docx-mailmerge](https://github.com/Bouke/docx-mailmerge/) library. It currently only supports simple merge fields (without inner formatting) and does not support image merge.
 
 ## Installation
 
@@ -18,7 +18,26 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To begin, open a merge file:
+
+    require 'docx-mailmerge'
+    document = DocxMailmerge::MailMerge.new('doc.docx')
+
+To figure out which fields are available, list all merge fields:
+
+    puts document.fields
+
+Do the actual merge:
+
+    document.merge(foo: 'Test')
+
+Get the output stream:
+
+    document.generate
+
+Alternatively, write to a file:
+
+    document.write('doc_merged.docx')
 
 ## Contributing
 
