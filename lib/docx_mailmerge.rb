@@ -92,7 +92,7 @@ module DocxMailmerge
 
     def generate()
       clean
-      Zip::OutputStream.write_buffer do |out|
+      buf = Zip::OutputStream.write_buffer do |out|
         @zip.entries.each do |e|
           unless e.ftype == :directory
             out.put_next_entry(e.name)
@@ -104,6 +104,8 @@ module DocxMailmerge
           end
         end
       end
+      buf.seek(0)
+      buf
     end
 
     def write(filename)
