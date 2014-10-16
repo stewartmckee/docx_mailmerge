@@ -12,7 +12,7 @@ module DocxMailmerge
       elsif f.class == String
         @zip = Zip::File.open(f)
       else
-        raise TypeError
+        raise ArgumentError, 'File must be either a filename or an IO-like object.'
       end
       @parts = {}
 
