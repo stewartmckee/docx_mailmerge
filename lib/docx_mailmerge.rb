@@ -51,7 +51,7 @@ module DocxMailmerge
           end_tags = parent.xpath('w:r/w:fldChar[@w:fldCharType="end"]/..')
           instr_tags = parent.xpath('w:r/w:instrText').map { |x| x.content }
 
-          instr_tags.each_with_index do |instr, idx|
+          instr_tags.take(begin_tags.length).each_with_index do |instr, idx|
             m = r.match(instr)
             next if not m
 
@@ -94,11 +94,13 @@ module DocxMailmerge
       clean
       Zip::OutputStream.write_buffer do |out|
         @zip.entries.each do |e|
-          out.put_next_entry(e.name)
-          if @parts.keys.include?(e.name)
-            out.write @parts[e.name].to_xml(indent: 0).gsub('\n', '')
-          else
-            out.write e.get_input_stream.read
+          unless e.ftype == :directory
+            out.put_next_entry(e.name)
+            if @parts.keys.include?(e.name)
+              out.write @parts[e.name].to_xml(indent: 0).gsub('\n', '')
+            else
+              out.write e.get_input_stream.read
+            end
           end
         end
       end
