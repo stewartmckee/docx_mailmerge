@@ -20,7 +20,7 @@ Or install it yourself as:
 
 To begin, open a merge file:
 
-    require 'docx-mailmerge'
+    require 'docx_mailmerge'
     document = DocxMailmerge::MailMerge.new('doc.docx')
 
 To figure out which fields are available, list all merge fields:
