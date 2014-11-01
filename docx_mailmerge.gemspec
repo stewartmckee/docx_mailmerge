@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["gary@radicalbear.com", "stephen.mcintosh@radicalbear.com"]
   spec.summary       = "Performs a Mail Merge on docx (Microsoft Office Word) files"
   spec.description   = "Write a longer description. Optional."
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/garyfoster/docx_mailmerge"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
