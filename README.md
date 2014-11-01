@@ -1,5 +1,7 @@
 # DocxMailmerge
 
+Performs a mail merge on DOCX (Microsoft Office Word) files. The user can use the Mail Merge Manager feature of Microsoft Word to create templates with merge fields embedded in the document. This library then allows a developer to take that DOXC file template as an input along with a hash containing the merge field names and values, and will return a merged document as a DOCX file that can be saved as a file, or persisted in a paperclip attachment or any other programmatic use.
+
 DocxMailmerge is a Ruby port of the Python [docx-mailmerge](https://github.com/Bouke/docx-mailmerge/) library. It currently only supports simple merge fields (without inner formatting) and does not support image merge.
 
 ## Installation
