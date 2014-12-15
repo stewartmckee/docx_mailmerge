@@ -90,6 +90,15 @@ module DocxMailmerge
       end
     end
 
+    def merge_hash(merge_data, parts: nil)
+      parts = @parts.values if not parts
+      parts.each do |part|
+        merge_data.each do |field, text|
+          merge_field(part, field, text)
+        end
+      end
+    end
+
     def generate()
       clean
       buf = Zip::OutputStream.write_buffer do |out|
